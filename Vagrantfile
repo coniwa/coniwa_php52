@@ -1,0 +1,11 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = ENV['VAGRANT_BOX'] || "chef/centos-7.0"
+
+  config.berkshelf.enabled = true
+  config.vm.provision :chef_zero do |chef|
+    chef.add_recipe 'coniwa_php52'
+  end
+end
